@@ -1,8 +1,17 @@
 import { NextResponse } from 'next/server';
 
-
-// This is a mock function - in reality, you would use your football API key
 export async function GET() {
+    const teams = [
+        { id: 42, name: "Arsenal", logo: "https://media.api-sports.io/football/teams/42.png" },
+        { id: 33, name: "Manchester United", logo: "https://media.api-sports.io/football/teams/33.png" },
+        { id: 40, name: "Liverpool", logo: "https://media.api-sports.io/football/teams/40.png" },
+        { id: 49, name: "Chelsea", logo: "https://media.api-sports.io/football/teams/49.png" },
+        { id: 50, name: "Manchester City", logo: "https://media.api-sports.io/football/teams/50.png" },
+        { id: 47, name: "Tottenham", logo: "https://media.api-sports.io/football/teams/47.png" }
+    ];
+    
+    return NextResponse.json({ teams });
+    /*
     try{
         console.log('API Key available:', !!process.env.FOOTBALL_API_KEY);
         // In production, you would fetch from the actual API:
@@ -33,5 +42,5 @@ export async function GET() {
             { error: 'Failed to fetch team data' },
             { status: 500 }
         );
-    }
+    } */
 }
