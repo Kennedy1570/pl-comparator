@@ -1,42 +1,52 @@
+/* app/globals.css */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  --fpl-purple: #37003c;
+  --fpl-purple-light: #5e036e;
+  --fpl-green: #00ff87;
+  --fpl-bg-light: #f8f8f8;
+  --fpl-text-dark: #242424;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--fpl-bg-light);
+  color: var(--fpl-text-dark);
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.btn-primary {
+  background-color: var(--fpl-purple);
+  border-color: var(--fpl-purple);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--fpl-purple-light);
+  border-color: var(--fpl-purple-light);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.btn-success {
+  background-color: var(--fpl-green);
+  border-color: var(--fpl-green);
+  color: var(--fpl-purple);
+  font-weight: bold;
+}
+
+.text-primary {
+  color: var(--fpl-purple) !important;
+}
+
+.bg-primary {
+  background-color: var(--fpl-purple) !important;
+}
+
+.fpl-accent {
+  color: var(--fpl-green);
+}
+
+.fpl-bg {
+  background-color: var(--fpl-purple);
+  color: white;
+}
+
+.fpl-accent-bg {
+  background-color: var(--fpl-green);
+  color: var(--fpl-purple);
 }
