@@ -18,7 +18,7 @@ export default function ComparePage() {
 
   useEffect(() => {
     async function fetchTeams() {
-        setLoading(true);
+        setLoadingTeams(true);
         try {
             const response = await fetch('/api/teams');
             const data = await response.json()
@@ -26,7 +26,7 @@ export default function ComparePage() {
         } catch (error) {
             console.error('Error fetching teams:', error);
         } finally {
-            setLoading(false);
+            setLoadingTeams(false);
         }
     }
     fetchTeams(); //12ac4350cdmsh0aeddf16544fbb9p161f88jsn8dc61b131383
