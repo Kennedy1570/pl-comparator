@@ -6,7 +6,7 @@ export async function GET() {
     try{
         console.log('API Key available:', !!process.env.FOOTBALL_API_KEY);
         // In production, you would fetch from the actual API:
-        const response = await fetch('https://api-football-v1.p.rapidapi.com/v3/teams?league=39&season=2024', {
+        const response = await fetch(`${process.env.FOOTBALL_API_URL}/teams?league=39&season=2024`, {
         headers: {
             'x-rapidapi-key': process.env.FOOTBALL_API_KEY,
             'x-rapidapi-host': 'api-football-v1.p.rapidapi.com'
@@ -29,5 +29,9 @@ export async function GET() {
         return NextResponse.json({teams})
     } catch (error) {
         console.error('Error fetching players:', error);
+        return NextResponse.json(
+            { error: 'Failed to fetch team data' },
+            { status: 500 }
+        );
     }
 }
