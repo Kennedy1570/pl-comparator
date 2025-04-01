@@ -11,7 +11,7 @@ export default function Home() {
         Welcome to our premier league stats comparator
       </div>
       <Link href="/compare" className="btn btn-success2">Compare Players</Link>
-      <Link href="/api/teams" className="btn btn-primary">View Teams</button>
+      <Link href="/teams" className="btn btn-primary">View Teams</button>
     </main>
   );
 }
