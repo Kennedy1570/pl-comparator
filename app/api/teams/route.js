@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-    const teams = [
+    const mockTeams = [
         { id: 42, name: "Arsenal", logo: "https://media.api-sports.io/football/teams/42.png" },
         { id: 33, name: "Manchester United", logo: "https://media.api-sports.io/football/teams/33.png" },
         { id: 40, name: "Liverpool", logo: "https://media.api-sports.io/football/teams/40.png" },
@@ -10,12 +10,15 @@ export async function GET() {
         { id: 47, name: "Tottenham", logo: "https://media.api-sports.io/football/teams/47.png" }
     ];
     
-    return NextResponse.json({ teams });
-    /*
     try{
+        if (!process.env.FOOTBALL_API_KEY) {
+            console.warn('FOOTBALL_API_KEY not found in environment variables. Using fallback data.');
+            return NextResponse.json({ teams: mockTeams });
+        }
+
         console.log('API Key available:', !!process.env.FOOTBALL_API_KEY);
-        // In production, you would fetch from the actual API:
-        const response = await fetch(`${process.env.FOOTBALL_API_URL}/teams?league=39&season=2024`, {
+        const apiUrl = process.env.FOOTBALL_API_URL || 'https://api-football-v1.p.rapidapi.com/v3';
+        const response = await fetch(`${apiUrl}/teams?league=39&season=2024`, {
         headers: {
             'x-rapidapi-key': process.env.FOOTBALL_API_KEY,
             'x-rapidapi-host': 'api-football-v1.p.rapidapi.com'
@@ -39,8 +42,8 @@ export async function GET() {
     } catch (error) {
         console.error('Error fetching players:', error);
         return NextResponse.json(
-            { error: 'Failed to fetch team data' },
-            { status: 500 }
+            { teams: fallbackTeams, error: 'Using fallback data due to API error' },
+            { status: 200 }
         );
-    } */
+    } 
 }
