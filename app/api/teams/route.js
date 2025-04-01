@@ -42,7 +42,7 @@ export async function GET() {
     } catch (error) {
         console.error('Error fetching players:', error);
         return NextResponse.json(
-            { teams: fallbackTeams, error: 'Using fallback data due to API error' },
+            { teams: mockTeams, error: 'Using fallback data due to API error' },
             { status: 200 }
         );
     } 
