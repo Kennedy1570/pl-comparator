@@ -3,7 +3,25 @@ import { NextResponse } from "next/server";
 export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const teamId = searchParams.get('team');
-  
+    
+    const playersByTeam = {
+        '42': [ // Arsenal
+            { id: 1, name: 'Bukayo Saka', position: 'RW', photo: 'https://media.api-sports.io/football/players/1461.png' },
+            { id: 2, name: 'Martin Ødegaard', position: 'CAM', photo: 'https://media.api-sports.io/football/players/1460.png' },
+            // Add more players
+        ],
+        '33': [ // Manchester United
+            { id: 3, name: 'Bruno Fernandes', position: 'CAM', photo: 'https://media.api-sports.io/football/players/3476.png' },
+            { id: 4, name: 'Marcus Rashford', position: 'LW', photo: 'https://media.api-sports.io/football/players/3477.png' },
+            // Add more players
+        ],
+        // Add more teams
+    };
+    
+    // Return players for the selected team
+    const players = playersByTeam[teamId] || [];
+    return NextResponse.json({ players });
+    /*
     if (!teamId) {
         return NextResponse.json(
         { error: 'Team ID is required' },
@@ -38,4 +56,5 @@ export async function GET(request) {
           { status: 500 }
         );
     }
+     */
 }
