@@ -102,7 +102,7 @@ export default function ComparePage() {
               <Form.Label>Select Team</Form.Label>
               <Form.Select 
                 value={teamId1}
-                onChange={handleTeam1Change}
+                onChange={handleTeamChange1}
               >
                 <option value="">Select a team</option>
                 {teams.map(team => (
@@ -128,7 +128,7 @@ export default function ComparePage() {
               <Form.Label>Select Team</Form.Label>
               <Form.Select 
                 value={teamId2}
-                onChange={handleTeam2Change}
+                onChange={handleTeamChange2}
               >
                 <option value="">Select a team</option>
                 {teams.map(team => (
