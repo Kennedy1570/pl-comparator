@@ -25,7 +25,7 @@ export default function ComparePage() {
             setTeams(data.teams || []);
         } catch (error) {
             console.error('Error fetching teams:', error);
-            setTeams([]);
+            setLoadingTeams([]);
         } finally {
             setLoadingTeams(false);
         }
