@@ -30,7 +30,7 @@ export default function ComparePage() {
             setLoadingTeams(false);
         }
     }
-    fetchTeams(); //12ac4350cdmsh0aeddf16544fbb9p161f88jsn8dc61b131383
+    fetchTeams(); 
   }, [])
 
   const handleTeamChange1 = async(e) => {
@@ -113,10 +113,33 @@ export default function ComparePage() {
             
             <Form.Group>
               <Form.Label>Select Player</Form.Label>
-              <Form.Select disabled={!teamId1}>
+              <Form.Select value={selectedPlayer1} onChange={handlePlayerChange1} disabled={!teamId1 || loadingPlayers1} /*disabled={!teamId1}*/>
                 <option value="">Select a player</option>
                 {/* We'll populate this when we have the API */}
+                {players1 && players1.map(player => (
+                    <option key={player.id} value={player.id}>
+                        {player.name} ({player.position})
+                    </option>
+                ))}
               </Form.Select>
+              {loadingPlayers1 && (
+                <div className="text-center mt-2">
+                    <Spinner animation="border" size="sm" />
+                </div>
+              )}
+              {selectedPlayer1 && players1.length > 0 && (
+                <div className="text-center mt-3">
+                    <img 
+                    src={players1.find(p => p.id.toString() === selectedPlayer1.toString())?.photo}
+                    alt="Player 1" 
+                    className="rounded-circle"
+                    style={{ maxWidth: '120px', maxHeight: '120px' }}
+                    />
+                    <p className="mt-2 fw-bold">
+                        {players1.find(p => p.id.toString() === selectedPlayer1.toString())?.name}
+                    </p>
+                </div>
+              )}
             </Form.Group>
           </Card>
         </Col>
@@ -138,18 +161,41 @@ export default function ComparePage() {
             </Form.Group>
             
             <Form.Group>
-              <Form.Label>Select Player</Form.Label>
-              <Form.Select disabled={!teamId2}>
+              <Form.Label >Select Player</Form.Label>
+              <Form.Select value={selectedPlayer2} onChange={handlePlayerChange2} disabled={!teamId2 || loadingPlayers2}/*disabled={!teamId2}*/>
                 <option value="">Select a player</option>
                 {/* We'll populate this when we have the API */}
+                {players2 && players2.map(player => (
+                    <option key={player.id} value={player.id}>
+                        {player.name} ({player.position})
+                    </option>
+                ))}
               </Form.Select>
+              {loadingPlayers2 && (
+                <div className="text-center mt-2">
+                    <Spinner animation="border" size="sm" />
+                </div>
+              )}
+              {selectedPlayer2 && players2.length > 0 && (
+                <div className="text-center mt-3">
+                    <img 
+                    src={players2.find(p => p.id.toString() === selectedPlayer2.toString())?.photo}
+                    alt="Player 2" 
+                    className="rounded-circle"
+                    style={{ maxWidth: '120px', maxHeight: '120px' }}
+                    />
+                    <p className="mt-2 fw-bold">
+                        {players2.find(p => p.id.toString() === selectedPlayer2.toString())?.name}
+                    </p>
+                </div>
+              )}
             </Form.Group>
           </Card>
         </Col>
       </Row>
       
       <div className="d-flex justify-content-center mt-4">
-        <Button className="btn-success px-4 py-2">Compare Players</Button>
+        <Button className="btn-success px-4 py-2" disabled={!selectedPlayer1 || !selectedPlayer2}>Compare Players</Button>
       </div>
     </Container>
   )
