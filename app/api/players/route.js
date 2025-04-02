@@ -18,10 +18,9 @@ export async function GET(request) {
         // Add more teams
     };
     
-    // Return players for the selected team
-    const players = playersByTeam[teamId] || [];
-    return NextResponse.json({ players });
-    /*
+    /*const players = playersByTeam[teamId] || [];
+    return NextResponse.json({ players });*/
+    
     if (!teamId) {
         return NextResponse.json(
         { error: 'Team ID is required' },
@@ -30,7 +29,8 @@ export async function GET(request) {
     }
 
     try{
-        const response = await fetch(`${process.env.FOOTBALL_API_URL}/players?league=39&season=2024`, {
+        const apiUrl = process.env.FOOTBALL_API_URL || 'https://api-football-v1.p.rapidapi.com/v3';
+        const response = await fetch(`${apiUrl}/players?league=39&season=2024`, {
         headers: {
             'x-rapidapi-key': process.env.FOOTBALL_API_KEY,
             'x-rapidapi-host': 'api-football-v1.p.rapidapi.com'
@@ -56,5 +56,4 @@ export async function GET(request) {
           { status: 500 }
         );
     }
-     */
 }
