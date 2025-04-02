@@ -193,8 +193,7 @@ export default function ComparePage() {
       <div className="d-flex justify-content-center mt-4">
         <Link href={selectedPlayer1 && selectedPlayer2 ? 
           `/comparison?player1=${selectedPlayer1}&player2=${selectedPlayer2}` : '#'}
-          passHref> <button className="btn-success px-4 py-2" 
-          disabled={!selectedPlayer1 || !selectedPlayer2}> Compare Players </button>
+          passHref> <button className="btn-success px-4 py-2" disabled={!selectedPlayer1 || !selectedPlayer2}> Compare Players </button>
         </Link>
       </div>
     </Container>
