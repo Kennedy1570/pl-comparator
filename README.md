@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Football Player Comparison App
 
-## Getting Started
+A Next.js application that allows users to compare football player statistics from the Premier League.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Select teams from the Premier League
+- Choose players from selected teams
+- Compare detailed player statistics side-by-side
+- Responsive design for mobile and desktop viewing
+- Real-time data from Football API
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Next.js**: React framework with App Router for both server and client components
+- **React Bootstrap**: UI component library for responsive design
+- **Football API**: Real-time football statistics
+- **AWS Amplify**: Hosting and deployment platform
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup and Installation
 
-## Learn More
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/football-player-comparison.git
+   cd football-player-comparison
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Create a `.env.local` file in the root directory with your API credentials:
+   ```
+   FOOTBALL_API_KEY=your_api_key_here
+   FOOTBALL_API_URL=https://api-football-v1.p.rapidapi.com/v3
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## API Integration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The app uses the Football API to fetch data for:
+- Premier League teams
+- Players by team
+- Player statistics
+
+The API implementation includes fallback data to ensure the app functions even when the API is unavailable.
+
+## Project Structure
+
+- `/app` - Next.js App Router pages and components
+- `/app/api` - API routes for server-side API calls
+- `/app/compare` - Player selection page
+- `/app/comparison` - Player comparison results page
+- `/public` - Static assets
+
+## Deployment
+
+The project is configured for deployment on AWS Amplify. The `amplify.yml` file includes the build configuration with environment variable handling.
+
+1. Set up your AWS Amplify project and connect it to your repository
+2. Add the environment variables in the Amplify Console
+3. Deploy the application
+
+## Future Improvements
+
+- Add historical comparison of players across seasons
+- Implement player search functionality
+- Add more detailed statistical visualizations
+- Support for comparing players across different leagues
+
+## License
+
+[MIT](LICENSE)
+
+## Acknowledgements
+
+- Football data provided by [Football API](https://www.api-football.com/)
+- Built with [Next.js](https://nextjs.org/)
+- Styled with [React Bootstrap](https://react-bootstrap.github.io/)
