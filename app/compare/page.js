@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 
 import React, {useState, useEffect} from 'react';
 import { Form, Button, Container, Row, Col, Card, Spinner } from 'react-bootstrap';
@@ -84,11 +85,6 @@ export default function ComparePage() {
     setSelectedPlayer2(e.target.value);
   };
 
-  const handleCompare = async () => {
-    if (selectedPlayer1 && selectedPlayer2) {
-      alert(`Ready to compare players with IDs: ${selectedPlayer1} and ${selectedPlayer2}`);
-    }
-  };
 
   return (
     <Container className="mt-4">
@@ -195,7 +191,11 @@ export default function ComparePage() {
       </Row>
       
       <div className="d-flex justify-content-center mt-4">
-        <Button className="btn-success px-4 py-2" disabled={!selectedPlayer1 || !selectedPlayer2}>Compare Players</Button>
+        <Link href={selectedPlayer1 && selectedPlayer2 ? 
+          `/comparison?player1=${selectedPlayer1}&player2=${selectedPlayer2}` : '#'}
+          passHref> <button className="btn-success px-4 py-2" 
+          disabled={!selectedPlayer1 || !selectedPlayer2}> Compare Players </button>
+        </Link>
       </div>
     </Container>
   )

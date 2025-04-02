@@ -30,7 +30,6 @@ export async function GET(requests) {
             );
           }
           
-          // Just return the first set of statistics (Premier League)
           const stats = data.response[0].statistics[0];
           
           return NextResponse.json({ statistics: stats });
