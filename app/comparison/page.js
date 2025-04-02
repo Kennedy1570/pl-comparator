@@ -1,12 +1,13 @@
 "use client";
+
 export const dynamic = 'force-dynamic';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Container, Row, Col, Card, Table, Spinner, Button } from 'react-bootstrap';
 import Link from 'next/link';
 
-export default function ComparisonPage() {
+function PlayerComparison() {
   const searchParams = useSearchParams();
   const player1Id = searchParams.get('player1');
   const player2Id = searchParams.get('player2');
@@ -21,6 +22,7 @@ export default function ComparisonPage() {
     async function fetchPlayerStats() {
       setLoading(true);
       try {
+        // Fetch stats for both players
         const response1 = await fetch(`/api/player-stats?id=${player1Id}`);
         const data1 = await response1.json();
         
@@ -153,5 +155,24 @@ export default function ComparisonPage() {
         </Col>
       </Row>
     </Container>
+  );
+}
+
+// Loader component for Suspense fallback
+function LoadingFallback() {
+  return (
+    <Container className="text-center my-5">
+      <Spinner animation="border" />
+      <p>Loading comparison data...</p>
+    </Container>
+  );
+}
+
+// Main export that wraps the component in Suspense
+export default function ComparisonPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <PlayerComparison />
+    </Suspense>
   );
 }
