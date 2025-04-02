@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -20,7 +21,6 @@ export default function ComparisonPage() {
     async function fetchPlayerStats() {
       setLoading(true);
       try {
-        // Fetch stats for both players
         const response1 = await fetch(`/api/player-stats?id=${player1Id}`);
         const data1 = await response1.json();
         
