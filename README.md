@@ -2,6 +2,9 @@
 
 A Next.js application that allows users to compare football player statistics from the Premier League.
 
+##Live Demo
+- https://main.d2a3yjhzag3tu4.amplifyapp.com/
+
 ## Features
 
 - Select teams from the Premier League
